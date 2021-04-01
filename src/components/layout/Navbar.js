@@ -6,7 +6,7 @@ export class Navbar extends Component {
         icon: 'fab fa-github'
     }
 
-    static PropTypes = {    //displays a console warning if the prop sent through the app does not match the specified data type
+    static propTypes = {    //displays a console warning if the prop sent through the app does not match the specified data type
         title: PropTypes.string.isRequired,
         icon: PropTypes.string.isRequired
     }
