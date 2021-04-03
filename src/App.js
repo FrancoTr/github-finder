@@ -9,7 +9,9 @@ class App extends React.Component {
     return (  //with JSX, we must return only one parent element (adjacent JSX elements must be wrapped in an enclosing tag)
       <div className='App'>
         <Navbar />
+        <div className="container">
         <Users />
+        </div>
       </div>
     )
   }
