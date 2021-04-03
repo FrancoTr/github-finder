@@ -6,7 +6,6 @@ class UserItem extends Component {
         login: 'mojombo',
         avatarl_url: 'https://avatars0.githubusercontent.com/u/1?v=4',
         html_url: 'https://github.com/mojombo'
-
     }
     render() {
         const {login, avatarl_url, html_url} = this.state   //destructuring the state values, so we no longer repeat this.state
