@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserItem from './UserItem'
 
 class Users extends Component {
     state = {
@@ -13,7 +14,7 @@ class Users extends Component {
                 id: '2',
                 login: 'defunkt',
                 avatar_url: 'https://avatars0.githubusercontent.com/u/2?v=4',
-                html_url: 'httpsL//github.com/defunkt'
+                html_url: 'https://github.com/defunkt'
             },
             {
                 id: '3',
@@ -27,8 +28,8 @@ class Users extends Component {
     render() {
         return (
             <div>
-                {this.state.users.map(user => (
-                    <div key={user.id}>{user.login}</div>
+                {this.state.users.map(user => ( //maps through each user and sends the user object to UserItem as a prop
+                    <UserItem key={user.id} user={user}/>
                 ))}
             </div>
         )
