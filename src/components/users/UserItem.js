@@ -1,7 +1,6 @@
 import React from 'react'
 
-const UserItem = props => {
-    const { login, avatar_url, html_url } = props.user //destructuring the prop 'user' values, so we no longer repeat this.state
+const UserItem = ({user: { login, avatar_url, html_url }}) => {
     return (
         <div classname= 'card text-center'>
             <img src={avatar_url} alt='' className='round-img' style={{ width: '60px'}}/>
