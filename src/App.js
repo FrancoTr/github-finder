@@ -5,9 +5,17 @@ import axios from 'axios'
 import './App.css'
 
 class App extends React.Component {
+  state = {
+    users: [],
+    loading: false //when false, the UI shows the spinner
+  }
+
   async componentDidMount() {
+    this.setState({ loading: true })
+
     const res = await axios.get('https://api.github.com/users') //request to the github API
-    console.log(res.data)
+    
+    this.setState({ users: res.data, loading: false})
   }
 
   render() { //lifecycle method, it renders the app components
