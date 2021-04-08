@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './components/layout/Navbar'
 import Users from './components/users/Users'
 import Search from './components/users/Search'
+import Alert from './components/layout/Alert'
 import axios from 'axios'
 import './App.css'
 
@@ -35,16 +36,17 @@ class App extends React.Component {
       <div className='App'>
         <Navbar />
         <div className="container">
+          <Alert alert ={this.state.alert} />
           <Search 
           searchUsers={this.searchUsers} 
           clearUsers={this.clearUsers} 
           showClear={
-            this.state.users.length > 0 ? true: false
+            users.length > 0 ? true: false
           }
           setAlert={this.setAlert}/>
           <Users 
-          loading={this.state.loading} 
-          users={this.state.users} />
+          loading={loading} 
+          users={users} />
         </div>
       </div>
     )
