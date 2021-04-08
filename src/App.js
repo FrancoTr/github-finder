@@ -11,13 +11,21 @@ class App extends React.Component {
     loading: false //when false, the UI shows the spinner
   }
 
-  async componentDidMount() {
-    this.setState({ loading: true })
+  // async componentDidMount() {
+  //   this.setState({ loading: true })
 
-    const res = await axios.get(`https:api.github.com/users?=client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+  //   const res = await axios.get(`https:api.github.com/users?=client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+  //   &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`) //request to the github API
+    
+  //   this.setState({ users: res.data, loading: false})
+  // }
+
+  // Search Github users
+  searchUsers = async text => {
+    const res = await axios.get(`https:api.github.com/search/users?q=${text}client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
     &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`) //request to the github API
     
-    this.setState({ users: res.data, loading: false})
+    this.setState({ users: res.data.items, loading: false})
   }
 
   render() { //lifecycle method, it renders the app components
@@ -25,7 +33,7 @@ class App extends React.Component {
       <div className='App'>
         <Navbar />
         <div className="container">
-          <Search />
+          <Search searchUsers={this.searchUsers}/>
           <Users loading={this.state.loading} users={this.state.users} />
         </div>
       </div>
