@@ -8,7 +8,8 @@ import './App.css'
 class App extends React.Component {
   state = {
     users: [],
-    loading: false //when false, the UI shows the spinner
+    loading: false,  //when false, the UI shows the spinner
+    alert: null
   }
 
   // Search Github users
@@ -23,6 +24,11 @@ class App extends React.Component {
   // Clear users from state
   clearUsers = () => this.setState({ users: [], loading: false})
 
+  // Set Alert
+  setAlert = (msg, type) => {
+    this.setState({ alert: { msg, type } })
+  }
+
   render() { //lifecycle method, it renders the app components
     const { users, loading } = this.state
     return (  //with JSX, we must return only one parent element (adjacent JSX elements must be wrapped in an enclosing tag)
@@ -34,7 +40,8 @@ class App extends React.Component {
           clearUsers={this.clearUsers} 
           showClear={
             this.state.users.length > 0 ? true: false
-          }/>
+          }
+          setAlert={this.setAlert}/>
           <Users 
           loading={this.state.loading} 
           users={this.state.users} />
