@@ -24,6 +24,7 @@ class App extends React.Component {
   clearUsers = () => this.setState({ users: [], loading: false})
 
   render() { //lifecycle method, it renders the app components
+    const { users, loading } = this.state
     return (  //with JSX, we must return only one parent element (adjacent JSX elements must be wrapped in an enclosing tag)
       <div className='App'>
         <Navbar />
