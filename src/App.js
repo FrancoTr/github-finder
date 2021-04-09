@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Users from './components/users/Users'
 import Search from './components/users/Search'
@@ -35,6 +36,7 @@ class App extends React.Component {
   render() { //lifecycle method, it renders the app components
     const { users, loading } = this.state
     return (  //with JSX, we must return only one parent element (adjacent JSX elements must be wrapped in an enclosing tag)
+      <Router>
       <div className='App'>
         <Navbar />
         <div className="container">
@@ -51,6 +53,7 @@ class App extends React.Component {
           users={users} />
         </div>
       </div>
+      </Router>
     )
   }
 }
