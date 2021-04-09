@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Users from './components/users/Users'
@@ -35,22 +35,26 @@ class App extends React.Component {
 
   render() { //lifecycle method, it renders the app components
     const { users, loading } = this.state
+
     return (  //with JSX, we must return only one parent element (adjacent JSX elements must be wrapped in an enclosing tag)
       <Router>
-      <div className='App'>
+      <div className="App">
         <Navbar />
         <div className="container">
-          <Alert alert ={this.state.alert} />
-          <Search 
-          searchUsers={this.searchUsers} 
-          clearUsers={this.clearUsers} 
-          showClear={
-            users.length > 0 ? true: false
-          }
-          setAlert={this.setAlert}/>
-          <Users 
-          loading={loading} 
-          users={users} />
+          <Alert alert={this.state.alert} />
+          <Switch>
+            <Route exact path='/' render={props => (
+              <Fragment>
+                <Search 
+                  searchUsers={this.searchUsers}
+                  clearUsers={this.clearUsers}
+                  showClear={users.length > 0 ? true : false}
+                  setAlert={this.setAlert}
+                  />
+                  <Users loading={loading} users={users} />
+              </Fragment>
+            )} />
+          </Switch>
         </div>
       </div>
       </Router>
