@@ -46,7 +46,7 @@ class App extends React.Component {
   }
 
   render() { //lifecycle method, it renders the app components
-    const { users, loading } = this.state
+    const { users, user, loading } = this.state
 
     return (  //with JSX, we must return only one parent element (adjacent JSX elements must be wrapped in an enclosing tag)
       <Router>
@@ -67,6 +67,9 @@ class App extends React.Component {
               </Fragment>
             )} />
             <Route exact path='/about'component={About}/>
+            <Route exact path='/user/:login' render={props => (
+              <User { ...props } getUser={this.getUser} user={user} loading={loading} />
+            )}/>
           </Switch>
         </div>
       </div>
