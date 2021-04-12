@@ -37,7 +37,11 @@ export class User extends Component {
 
         return (
             <Fragment>
-                <Link to='/' className='btn btn-light'> Back To Search</Link>
+                <Link to='/' className='btn tbn-light'>
+                    Back To Search
+                </Link>
+                Hireable: {' '}
+                {hireable ? <i className="fas fa-check text-success" /> : <i className="fas fa-times-circle text-danger" /> }
             </Fragment>
         )
     }
