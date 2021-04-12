@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import Spinner from '../layout/Spinner'
+import Spinner from '../layout/Spinner'
 import PropTypes from 'prop-types'
 
 export class User extends Component {
@@ -7,7 +7,7 @@ export class User extends Component {
         this.props.getUser(this.props.match.params.login) //using the user from the url, getUser obtains the rest of the gitHub profile info
     }
 
-    static PropTypes = {
+    static propTypes = {
         loading: PropTypes.bool,
         user: PropTypes.object.isRequired,
         getUser: PropTypes.func.isRequired
@@ -31,6 +31,8 @@ export class User extends Component {
         } = this.props.user
 
         const { loading } = this.props
+
+        if (loading) return <Spinner/>
         return (
             <div>
                 {name}
