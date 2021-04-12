@@ -17,6 +17,7 @@ export class User extends Component {
     render() {
         const {
             name,
+            Company,
             avatar_url,
             url,
             location,
@@ -54,6 +55,18 @@ export class User extends Component {
                             <p>{bio}</p>
                         </Fragment>)}
                         <a href={html_url} className="btn btn-dark my-1">Visit Github Profile</a>
+                        <ul>
+                            <li>
+                                {login && <Fragment>
+                                    <strong>Username: </strong>{login}           
+                                </Fragment>}
+                            </li>
+                            <li>
+                                {Company && <Fragment>
+                                    <strong>Company: </strong>{Company}           
+                                </Fragment>}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </Fragment>
