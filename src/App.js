@@ -20,16 +20,6 @@ const App = () => {
   const [loading, setLoading] = useState(false) //when false, the UI shows the spinner
   const [alert, setAlert] = useState(null)
 
-  // Search Github users
-  const searchUsers = async text => {
-    setLoading(true)
-    const res = await axios.get(`https:api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-    &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`) //request to the github API
-    
-    setUsers(res.data.items)
-    setLoading(false)
-  }
-
   // Get a single Github user
   const getUser = async (username) => {
     setLoading(true)
@@ -74,7 +64,6 @@ const App = () => {
             <Route exact path='/' render={props => (
               <Fragment>
                 <Search 
-                  searchUsers={searchUsers}
                   clearUsers={clearUsers}
                   showClear={users.length > 0 ? true : false}
                   setAlert={showAlert}
