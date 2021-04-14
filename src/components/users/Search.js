@@ -14,7 +14,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert}) => {
         if(text ==='') {
             setAlert('Please enter something', 'light')
         } else {
-            searchUsers(this.state.text)
+            searchUsers(text)
             setText('')
         }
     }
