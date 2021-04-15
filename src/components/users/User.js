@@ -1,14 +1,13 @@
 import React, { Fragment, useEffect, useContext } from 'react'
 import Spinner from '../layout/Spinner'
 import Repos from '../repos/Repos'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import GithubContext from '../../context/github/githubContext'
 
-const User = ({ getUserRepos, repos, match }) => {
+const User = ({ match }) => {
     const githubContext = useContext(GithubContext)
 
-    const { getUser, loading, user} = githubContext
+    const { getUser, loading, user, repos, getUserRepos } = githubContext
 
     useEffect(() => {
         getUser(match.params.login) //using the user from the url, getUser obtains the rest of the gitHub profile info
@@ -84,11 +83,6 @@ const User = ({ getUserRepos, repos, match }) => {
             <Repos repos={repos}/>
         </Fragment>
     )
-}
-
-User.propTypes = {
-    repos: PropTypes.array.isRequired,
-    getUserRepos: PropTypes.func.isRequired
 }
 
 export default User
